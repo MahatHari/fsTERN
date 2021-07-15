@@ -48,7 +48,7 @@ const pam: Employee = {
 console.log(pam.getUniqueId());
 
 class Vehicle {
-  constructor(private wheelCount: number) {}
+  constructor(protected wheelCount: number) {}
   showNumberOfWheels() {
     console.log(`moved ${this.wheelCount} miles`);
   }
@@ -56,6 +56,9 @@ class Vehicle {
 class Motorcycle extends Vehicle {
   constructor() {
     super(2);
+  }
+  updateWheelCount(newWheeelCount: number) {
+    this.wheelCount = newWheeelCount;
   }
 }
 class Automobile extends Vehicle {
