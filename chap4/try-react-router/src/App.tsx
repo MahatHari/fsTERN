@@ -1,25 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ScreenB from './components/ScreenB';
+import ScreenA from './components/ScreenA';
+import ScreenC from './components/ScreenC';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
+  const renderScreenC = (props: any) => {
+    console.log('screen C Props', props);
+    return <ScreenC {...props} message='This is screen C' />;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact={true} path='/' component={ScreenA}></Route>
+      <Route path='/b' component={ScreenB} />
+      <Route path='/c/:userid' render={renderScreenC} />
+    </Switch>
   );
 }
 
